@@ -1,4 +1,10 @@
 # Nepravilni glagoli
-Spletna stran za učenje angleških nepravilnih glagolov.
+### Opis
+  Spletna stran za učenje angleških nepravilnih glagolov.
 
-Narejeno 1. 2. 2022
+  Prva verzija 1. 2. 2022
+### Verzije
+#### 1.0
+ Izdana 1. 2. 2022
+
+ Prva verzija.
