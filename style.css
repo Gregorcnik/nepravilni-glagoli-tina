@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body{
   font-family: arial, sans-serif;
   padding: 30px;
@@ -74,7 +78,7 @@ tr:nth-child(even) {
   margin: 0;
   position: absolute;
   top: 50%;
-  left: 50%;*/
+  left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
@@ -87,6 +91,7 @@ input{
   font-size: medium;
   padding: 0;
   border-radius: 0;
+  padding: 0 8px 0 8px;
 }
 input:focus{
   outline: 0;
