@@ -5,12 +5,32 @@
     <title>Nepravilni glagoli</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,200" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-    <div id="preveri" class="fixBtnRight" onclick="t = preveri(a); pravilno += t[0]; vseTocke += (t[1]+t[0]); nastaviStevecTock(pravilno, vseTocke); skrij('preveri');" style="right: 60px;"><p class="tooltiptext">preveri</p><span class="material-icons">&#xe5ca;</span></div>
-    <div id="resi" class="fixBtnRight" onclick="resi(a); preveri(a); skrij('preveri');" style="background-color: darkOrange"><p class="tooltiptext">reši</p><span class="material-icons">&#xe8fd;</span></div>
-    <div id="izpisiVse" class="fixBtnLeft" onclick="document.getElementById('seznamBesed').innerHTML = narediSeznamBesed(s, function f() {return 3;}); resi(s); preveri(s); skrij('preveri');" style="background-color: darkblue"><p class="tooltiptext">izpiši vse</p><span class="material-icons">&#xe865;</span></div>
+
+    <div style="display: none; right: 60px;" class="fixBtnRight" id="naprej" onclick="document.getElementById('seznamBesed').innerHTML = narediSeznamBesed([a[i]], function f() {return nakljucno(4)-1;}); console.log(narediSeznamBesed([a[i]], function f() {return nakljucno(4)-1;})); prikazi('preveri');">
+      <p class="tooltiptext">naprej</p>
+      <span class="material-symbols-rounded">
+        arrow_right_alt
+      </span>
+    </div>
+    
+    <div id="preveri" class="fixBtnRight" onclick="t = preveri(a); pravilno += t[0]; vseTocke += (t[1]+t[0]); nastaviStevecTock(pravilno, vseTocke); skrij('preveri');" style="right: 60px;">
+      <p class="tooltiptext">preveri</p>
+      <span class="material-icons">&#xe5ca;</span>
+    </div>
+
+    <div id="resi" class="fixBtnRight" onclick="resi(a); preveri(a); skrij('preveri');" style="background-color: darkOrange">
+      <p class="tooltiptext">reši</p>
+      <span class="material-icons">&#xe8fd;</span>
+    </div>
+
+    <div id="izpisiVse" class="fixBtnLeft" onclick="document.getElementById('seznamBesed').innerHTML = narediSeznamBesed(s, function f() {return 3;}); resi(s); preveri(s); skrij('preveri');" style="background-color: darkblue">
+      <p class="tooltiptext">izpiši vse</p>
+      <span class="material-icons">&#xe865;</span>
+    </div>
 
     <div class="stevecTock"><span id="pravilno">0</span> / <span id="steviloNalog">0</span></div>
 
@@ -22,10 +42,6 @@
 
     <table id="seznamBesed"></table>
 
-    <div style="display: none" class="btnCenter" id="naprej" onclick="a = [s[nakljucno(s.length)-1]]; document.getElementById('seznamBesed').innerHTML = narediSeznamBesed(a, function f() {return nakljucno(4)-1;}); prikazi('preveri');">
-      <i class="fa fa-chevron-down"></i>
-    </div>
-
   </body>
 </html>
 
@@ -34,13 +50,16 @@
   var s =
           [["be", "was/were", "been", "biti"], ["become", "became", "become", "postati"], ["begin", "began", "begun", "začeti"], ["bite", "bit", "bitten", "ugrizniti"], ["blow", "blew", "blown", "pihati"], ["break", "broke", "broken", "zlomiti"], ["bring", "brought", "brought", "prinesti"], ["build", "built", "built", "zgraditi"], ["burn", "burnt", "burnt", "opeči"], ["buy", "bought", "bought", "kupiti"], ["can", "could", "/", "znati"], ["catch", "caught", "caught", "ujeti"], ["choose",  "chose", "chosen", "izbrati"], ["come", "came", "come", "priti"], ["cost", "cost", "cost", "imeti ceno"], ["cut", "cut", "cut", "rezati"], ["dig", "dug", "dug", "kopati"], ["do", "did", "done", "narediti"], ["draw", "drew", "drawn", "narisati"], ["dream", "dreamt", "dreamt", "sanjati"], ["drink", "drank", "drunk", "piti"], ["drive", "drove", "driven", "voziti se"], ["eat", "ate", "eaten", "jesti"], ["fall", "fell", "fallen", "pasti"], ["feed", "fed", "fed", "krmiti"], ["feel", "felt", "felt", "čutiti"], ["fight", "fought", "fought", "boriti se"], ["find", "found", "found", "najti"], ["fly", "flew", "flown", "leteti"], ["forget", "forgot", "forgotten", "pozabiti"], ["freeze", "froze", "frozen", "zmrzniti"], ["get", "got", "got", "dobiti"], ["give", "gave", "given", "dati"], ["go", "went", "gone", "iti"], ["grow", "grew", "grown", "rasti"], ["hang", "hung", "hung", "viseti"], ["have", "had", "had", "imeti"], ["hear", "heard", "heard", "slišati"], ["hide", "hid", "hidden", "skriti"], ["hit", "hit", "hit", "udariti"], ["hurt", "hurt", "hurt", "raniti"], ["keep", "kept", "kept", "ohraniti"], ["know", "knew", "known", "vedeti"], ["leave", "left", "left", "zapustiti"], ["learn", "learnt", "learnt", "učiti se"], ["lend", "lent", "lent", "posoditi"], ["let", "let", "let", "pustiti"], ["lie", "lay", "lain", "ležati"], ["lose", "lost", "lost", "igubiti"], ["make", "made", "made", "narediti"], ["mean", "meant", "meant", "pomeniti"], ["meet", "met", "met", "srečati"], ["must", "had to", "had to", "morati"], ["pay", "paid", "paid", "plačati"], ["put", "put", "put", "položiti"], ["read", "read", "read", "brati"], ["ride", "rode", "ridden", "jahati"], ["ring", "rang", "rung", "zvoniti"], ["run", "ran", "run", "teči"], ["say", "said", "said", "reči"], ["see", "saw", "seen", "videti"], ["sell", "sold", "sold", "prodati"], ["send", "sent", "sent", "poslati"], ["set", "set", "set", "pripraviti"], ["shake", "shook", "shaken", "stresti"], ["shoot", "shot", "shot", "streljati"], ["shut", "shut", "shut", "zapreti"], ["sing", "sang", "sung", "peti"], ["sink", "sank", "sunk", "potopiti"], ["sit", "sat", "sat", "sedeti"], ["sleep", "slept", "slept", "spati"], ["speak", "spoke", "spoken", "govoriti"], ["spend", "spent", "spent", "porabiti"], ["stand", "stood", "stood", "stati"], ["steal", "stole", "stolen", "ukrasti"], ["stick", "stuck", "stuck", "nalepiti"], ["sweep", "swept", "swept", "pometati"], ["swim", "swam", "swum", "plavati"], ["take", "took", "taken", "vzeti"], ["teach", "taught", "taught", "učiti"], ["tell", "told", "told", "povedati"], ["think", "thought", "thought", "misliti"], ["throw", "threw", "thrown", "vreči"], ["understand", "understood", "understood", "razumeti"], ["wake", "woke", "woken", "zbuditi"], ["wear", "wore", "worn", "nositi"], ["win", "won", "won", "zmagati"], ["write", "wrote", "written", "pisati"]];
 
-  var a = [s[nakljucno(s.length)-1]];
+  var a = premesaj(s);
 
   var pravilno = 0;
   var vseTocke = 0;
+  var i = 0;
 
-  document.getElementById('seznamBesed').innerHTML = narediSeznamBesed(a, function f() {return nakljucno(4)-1;});
+  console.log(a);
 
+  document.getElementById('seznamBesed').innerHTML = narediSeznamBesed([a[i]], function f() {return nakljucno(4)-1;});
+  
   function narediSeznamBesed(seznam, funkcijaZaStolpec) {
     var vrnitev = "<tbody><tr style=\'position: sticky; top: -1.5px; background-color: white;\'><td><b>Infitive</b><br><i>nedoločnik</i></td><td><b>Past Tense</b><br><i>preteklik</i></td><td><b>Past Participle</b><br><i>pretekli deležnik</i></td><td><b></b><br><i>slovenski prevod</i></td></tr></tbody>";
     for (var vrstica = 0; vrstica < seznam.length; vrstica++) {

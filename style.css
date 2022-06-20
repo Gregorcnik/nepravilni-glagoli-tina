@@ -6,6 +6,8 @@ body{
   font-family: arial, sans-serif;
   padding: 30px;
   padding-top: 10px;
+  background-color: #fff;
+  color: #000;
 }
 
 table {
@@ -74,7 +76,7 @@ tr:nth-child(even) {
   transform: translate(-50%, -50%);
 }
 
-.material-icons {
+.material-icons, .material-symbols-rounded {
   margin: 0;
   position: absolute;
   top: 50%;
