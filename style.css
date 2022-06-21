@@ -76,7 +76,7 @@ tr:nth-child(even) {
   transform: translate(-50%, -50%);
 }
 
-.material-icons, .material-symbols-rounded {
+.btnIcon {
   margin: 0;
   position: absolute;
   top: 50%;
@@ -154,6 +154,13 @@ input:focus{
   margin: 10px;
 }
 
+.nastavitve {
+  float: right;
+  padding: 18px;
+  padding-right: 7px;
+  cursor: pointer;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: rgb(24, 24, 26);
@@ -174,5 +181,8 @@ input:focus{
   }
   tr {
     background-color: rgb(24, 24, 26) !important;
+  }
+  .stevecTock {
+    color: #fff;
   }
 }

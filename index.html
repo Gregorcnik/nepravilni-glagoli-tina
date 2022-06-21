@@ -3,40 +3,88 @@
   <head>
     <meta charset="utf-8">
     <title>Nepravilni glagoli</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Google Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,200" />
+
+    <!-- Font Awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
   </head>
   <body>
 
+    <!-- "naprej" button -->
     <div style="display: none; right: 60px;" class="fixBtnRight" id="naprej" onclick=" 
-      i = dodajI(i); 
-      document.getElementById('seznamBesed').innerHTML = narediSeznamBesed([a[i]], function f() {return nakljucno(4)-1;}); 
+      document.getElementById('seznamBesed').innerHTML = narediSeznamBesed([a[i]], izberiStolpec);
       prikazi('preveri');">
 
       <p class="tooltiptext">naprej</p>
-      <span class="material-symbols-rounded">
+      <span class="material-symbols-rounded btnIcon">
         arrow_right_alt
       </span>
     </div>
     
-    <div id="preveri" class="fixBtnRight" onclick="t = preveri([a[i]]); pravilno += t[0]; vseTocke += (t[1]+t[0]); nastaviStevecTock(pravilno, vseTocke); skrij('preveri');" style="right: 60px;">
+    <!-- "preveri" button -->
+    <div id="preveri" class="fixBtnRight" onclick="t = preveri([a[i]]); if (t[1] == 0) {i = dodajI(i);} pravilno += t[0]; vseTocke += (t[1]+t[0]); nastaviStevecTock(pravilno, vseTocke); skrij('preveri');" style="right: 60px;">
       <p class="tooltiptext">preveri</p>
-      <span class="material-icons">&#xe5ca;</span>
+      <span class="material-icons btnIcon">&#xe5ca;</span>
     </div>
 
+    <!-- "resi" button -->
     <div id="resi" class="fixBtnRight" onclick="resi([a[i]]); preveri([a[i]]); skrij('preveri');" style="background-color: darkOrange">
       <p class="tooltiptext">reši</p>
-      <span class="material-icons">&#xe8fd;</span>
+      <span class="material-icons btnIcon">&#xe8fd;</span>
     </div>
 
+    <!-- "izpisi vse" button -->
     <div id="izpisiVse" class="fixBtnLeft" onclick="document.getElementById('seznamBesed').innerHTML = narediSeznamBesed(a, function f() {return 3;}); resi(a); preveri(a); skrij('preveri');" style="background-color: darkblue">
       <p class="tooltiptext">izpiši vse</p>
-      <span class="material-icons">&#xe865;</span>
+      <span class="material-icons btnIcon">&#xe865;</span>
     </div>
 
+    <!-- Stevec Tock -->
     <div class="stevecTock"><span id="pravilno">0</span> / <span id="steviloNalog">0</span></div>
+    <!-- "settings" button -->
+    <div class="nastavitve" data-bs-toggle="modal" data-bs-target="#myModal"><span class="material-symbols-rounded"> settings </span></div>
+
+    <!-- The Modal (for settings) -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Nastavitve</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <p>Izberi, kateri prostorček naj bo v naprej izpolnjen: </p>
+            <select class="form-select" id="set1">
+              <option value="naključno">naključno</option>
+              <option value="nedoločnik">nedoločnik</option>
+              <option value="preteklik">preteklik</option>
+              <option value="pretekli deležnik">pretekli deležnik</option>
+              <option value="prevod">prevod</option>
+            </select>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" onclick="stStolpca = nastaviStStolpec()">Shrani</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
     <h1>Program za preverjanje angleških nepravilnih glagolov</h1>
     <p>Izpolni prazne okvirčke. Pri prevodu je več pravilnih možnosti, zato se prevod ne točkuje.

@@ -4,9 +4,10 @@ var s =
 var a = s;
 a = premesaj(a);
 
- var pravilno = 0;
+var pravilno = 0;
 var vseTocke = 0;
 var i = 0;
+var stStolpca = -1; //-1 means nakljucno, 1 means first column itd.
 
 document.getElementById('seznamBesed').innerHTML = narediSeznamBesed([a[0]], function f() {return nakljucno(4)-1;});
   
@@ -107,10 +108,38 @@ function prikazi(id) {
   document.getElementById(id).style.visibility = 'hidden';
 }
 
- function dodajI(i) {
+function dodajI(i) {
   if (i < a.length - 1) { 
     return i+1;
   } else {
     return 0;
+  }
+}
+
+function izberiStolpec () {
+  // vrne index stolpca za izpis
+  if (stStolpca == -1) {
+    return nakljucno(4)-1;
+  } else {
+    return stStolpca-1;
+  }
+}
+
+function nastaviStStolpec() {
+  console.log("jej");
+  if (document.getElementById("set1").value == "naključno") {
+    return -1;
+  }
+  if (document.getElementById("set1").value == "nedoločnik") {
+    return 1;
+  }
+  if (document.getElementById("set1").value == "preteklik") {
+    return 2;
+  }
+  if (document.getElementById("set1").value == "pretekli deležnik") {
+    return 3;
+  }
+  if (document.getElementById("set1").value == "prevod") {
+    return 4;
   }
 }
