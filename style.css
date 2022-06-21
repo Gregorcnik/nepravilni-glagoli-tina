@@ -153,3 +153,26 @@ input:focus{
   border-radius: 10px;
   margin: 10px;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: rgb(24, 24, 26);
+    color: rgb(173, 163, 119);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: rgb(213, 151, 19);
+  }
+  .tooltiptext {
+    background-color: rgb(173, 163, 119);
+    color: #000;
+  }
+  .tooltiptext::after {
+    border-color: rgb(173, 163, 119) transparent transparent transparent;
+  }
+  input {
+    color: rgb(173, 163, 119);
+  }
+  tr {
+    background-color: rgb(24, 24, 26) !important;
+  }
+}

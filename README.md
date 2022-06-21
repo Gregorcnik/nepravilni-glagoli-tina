@@ -9,4 +9,3 @@
 ### Cilji
 * dodanje zavihka "nastavitve"
 * možnost preverjanja vnosa zgolj s tipko "enter"
-
