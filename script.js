@@ -143,3 +143,11 @@ function nastaviStStolpec() {
     return 4;
   }
 }
+
+function toggleTheme (element) {
+  if (element.checked) {
+    document.getElementById("body").classList = "dark";
+  } else {
+    document.getElementById("body").classList = "";
+  }
+}
