@@ -146,6 +146,19 @@ input:focus{
   transform: translate(100%, 100%);
 }
 
+.tag {
+  line-height: 0.5rem;
+  padding: 0.4rem;
+  border: 0.5px solid rgb(116, 116, 116);
+  border-radius: 10px;
+}
+
+.beta {
+  background-image: linear-gradient(darkblue, rgb(128, 0, 255));
+  color: white !important;
+  border-width: 0;
+}
+
 .stevecTock {
   float: right;
   padding: 10px;
@@ -197,8 +210,9 @@ input:focus{
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: .3s;
+  transition: .3s;
+  transition-timing-function: cubic-bezier(0, 0, 0.8, 1.36);
 }
 
 input:checked + .slider {
