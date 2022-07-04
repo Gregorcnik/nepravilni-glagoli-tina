@@ -30,7 +30,8 @@
   <body id="body">
 
     <!-- "naprej" button -->
-    <div style="display: none; right: 60px;" class="fixBtnRight" id="naprej" onclick=" 
+    <div style="display: none; right: 60px;" class="fixBtnRight" id="naprej" onclick="
+      if (t[1] == 0) {i = dodajI(i);}
       document.getElementById('seznamBesed').innerHTML = narediSeznamBesed([a[i]], izberiStolpec);
       prikazi('preveri');">
 
@@ -39,9 +40,9 @@
         arrow_right_alt
       </span>
     </div>
-    
+
     <!-- "preveri" button -->
-    <div id="preveri" class="fixBtnRight" onclick="t = preveri([a[i]]); if (t[1] == 0) {i = dodajI(i);} pravilno += t[0]; vseTocke += (t[1]+t[0]); nastaviStevecTock(pravilno, vseTocke); skrij('preveri');" style="right: 60px;">
+    <div id="preveri" class="fixBtnRight" onclick="t = preveri([a[i]]); pravilno += t[0]; vseTocke += (t[1]+t[0]); nastaviStevecTock(pravilno, vseTocke); skrij('preveri');" style="right: 60px;">
       <p class="tooltiptext">preveri</p>
       <span class="material-icons btnIcon">&#xe5ca;</span>
     </div>
@@ -99,7 +100,7 @@
           <!-- Modal footer -->
           <div class="modal-footer bg-light">
             <div class = "row">
-              <div class = "col-sm-9"><small style="float: left;">Če želite kaj predlagati, se pritožiti, kaj pohvaliti itd. to napišite <a href="http://github.com/Gregorcnik/nepravilni-glagoli/issues" target="_blank" rel="issues">tukaj</a></small></div>
+              <div class = "col-sm-9"><small style="float: left;">Če želite kaj predlagati, se pritožiti, kaj pohvaliti itd. to napišite <a href="http://github.com/Gregorcnik/nepravilni-glagoli/issues" target="_blank" rel="issues">tukaj</a>. Naredil Gregor Potočnik.</small></div>
               <div  class="col-sm-3 pt-2"><button type="button" class="w-100 btn btn-success" style="float: right" data-bs-dismiss="modal" onclick="stStolpca = nastaviStStolpec()">Shrani</button></div>
             </div>
           </div>
